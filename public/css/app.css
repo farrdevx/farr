@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+        body {
+            /* Background untuk melihat efek glassmorphism dengan jelas */
+            background: linear-gradient(to bottom right, #4c51bf, #805ad5, #e53e3e);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 6rem; /* Sesuaikan dengan tinggi header */
+        }
+
+        /* CSS for the typing effect cursor */
+        .typing-cursor {
+            border-right: 2px solid white; /* The blinking cursor */
+            animation: blink-caret .75s step-end infinite;
+        }
+
+        /* Keyframes for the blinking cursor animation */
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: white; }
+        }
+
+        /* Custom Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1); /* White with 10% opacity */
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%); /* For Safari */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1rem; /* Adjust as needed */
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+        }
+
+        /* Accordion specific styles */
+        .accordion-item {
+            background: rgba(255, 255, 255, 0.05); /* Slightly darker glass for accordion */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+            overflow: hidden; /* To hide content smoothly */
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.125rem; /* text-lg */
+            color: white;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 200px; /* Adjust as needed based on content */
+            padding-bottom: 1.25rem; /* Add padding when open */
+        }

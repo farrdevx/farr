@@ -35,13 +35,14 @@
                             Belum ada link
                         @endif
                     </p>
+                    <br>
                 </x-filament::card>
             @empty
                 <x-filament::card class="mt-4">
                     <p>Anda belum memiliki langganan aktif.</p>
                 </x-filament::card>
             @endforelse
-		<br>
+
             {{-- Bagian Tombol Bantuan ke WhatsApp --}}
             <div class="mt-6">
                 <a href="https://wa.me/6281234567890?text=Halo%20saya%20butuh%20bantuan%20mengenai%20layanan%20Anda."
