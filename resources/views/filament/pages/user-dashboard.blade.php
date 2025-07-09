@@ -36,6 +36,7 @@
                             Belum ada link
                         @endif
                     </p>
+                    <br>
                 </x-filament::card>
             @empty
                 <x-filament::card class="mt-4">
@@ -43,7 +44,7 @@
                 </x-filament::card>
             @endforelse
 
-            ---
+            <hr>
 
             {{-- Bagian Tombol Bantuan ke WhatsApp --}}
             <div class="mt-6">
