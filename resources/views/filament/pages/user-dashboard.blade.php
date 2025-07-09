@@ -1,5 +1,5 @@
 <x-filament-panels::page>
-    <div class="fi-page-content-wrapper">
+    <div class="fi-page-content-wrapper mt-4">
         <div class="fi-page-content">
             {{-- Bagian Informasi Akun Pengguna --}}
             <x-filament::card>
@@ -7,11 +7,10 @@
                 <p><strong>Nama:</strong> {{ Auth::user()->name }}</p>
                 <p><strong>Email:</strong> {{ Auth::user()->email }}</p>
                 <p><strong>Nomor HP:</strong> {{ Auth::user()->nomor_hp ?? 'Belum diisi' }}</p>
-            </x-filament::card>
-
+	 </x-filament::card>
             {{-- Bagian Daftar Langganan Pengguna --}}
             @forelse($this->userSubscriptions as $subscription)
-                <x-filament::card class="mt-4">
+                <x-filament::card class="mt-4 mb-4">
                     <x-slot name="heading">Detail Langganan #{{ $subscription->id }}</x-slot>
                     <p><strong>Nama Paket:</strong> {{ $subscription->paket->nama_paket }}</p>
                     <p><strong>Nama Hosting:</strong> {{ $subscription->hosting->nama_hosting }}</p>
@@ -43,8 +42,6 @@
                     <p>Anda belum memiliki langganan aktif.</p>
                 </x-filament::card>
             @endforelse
-
-            <hr>
 
             {{-- Bagian Tombol Bantuan ke WhatsApp --}}
             <div class="mt-6">
