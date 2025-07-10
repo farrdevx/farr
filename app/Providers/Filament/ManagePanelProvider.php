@@ -29,7 +29,7 @@ class ManagePanelProvider extends PanelProvider
             ->path('manage')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Sky,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -55,6 +55,7 @@ class ManagePanelProvider extends PanelProvider
             ->plugins([
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
             ])
+	    ->brandName('FarrCloud')
             ->authMiddleware([
                 Authenticate::class,
             ]);

@@ -36,7 +36,14 @@ class SubscriptionResource extends Resource
                     ->required(),
                 Forms\Components\DatePicker::make('tanggal_berakhir')
                     ->required(),
-                Forms\Components\TextInput::make('status_website'),
+		Forms\Components\Select::make('status_website')
+                    ->options([
+                        'Aktif' => 'Aktif',
+                        'Nonaktif' => 'Nonaktif',
+                        'Dalam Pembuatan' => 'Dalam Pembuatan',
+                    ])
+                    ->required()
+                    ->label('Status Website'),
                 Forms\Components\TextInput::make('link_website')
                     ->maxLength(255)
                     ->default(null),
@@ -47,13 +54,12 @@ class SubscriptionResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')
+                Tables\Columns\TextColumn::make('user.name')
+		    ->label('Customer')
+		    ->sortable(),
+                Tables\Columns\TextColumn::make('paket.nama_paket')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('paket_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('hosting_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('hosting.nama_hosting')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('tanggal_mulai')
                     ->date()
@@ -62,7 +68,14 @@ class SubscriptionResource extends Resource
                     ->date()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status_website')
-                    ->searchable(),
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'Aktif' => 'success',
+                        'Nonaktif' => 'danger',
+                        'Dalam Pembuatan' => 'warning',
+                        default => 'gray',
+                    })
+                    ->label('Status'),
                 Tables\Columns\TextColumn::make('link_website')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
@@ -75,7 +88,13 @@ class SubscriptionResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('status_website')
+                    ->options([
+                        'Aktif' => 'Aktif',
+                        'Nonaktif' => 'Nonaktif',
+                        'Dalam Pembuatan' => 'Dalam Pembuatan',
+                    ])
+                    ->label('Filter Status'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

@@ -26,7 +26,8 @@
             <a href="#layanan" class="text-white hover:text-gray-200 transition-colors duration-200">Layanan</a>
             <a href="#faq" class="text-white hover:text-gray-200 transition-colors duration-200">FAQ</a>
             <a href="#testimoni" class="text-white hover:text-gray-200 transition-colors duration-200">Testimoni</a>
-        </nav>
+	    <a href="{{ url('manage') }}" class="text-white hover:text-gray-200 transition-colors duration-200">Console Panel</a>
+	</nav>
 
         <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none"
                 aria-controls="mobile-menu" aria-expanded="false">
