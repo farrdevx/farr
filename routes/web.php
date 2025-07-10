@@ -9,6 +9,8 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+
+
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 
